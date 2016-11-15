@@ -1,7 +1,7 @@
 <template>
-  <tt >
-    <img :src="`../static/images/${image.url}`" draggable="false">
-    <i v-bind:style="{ paddingBottom: image.height / this.image.width * 100 + '%' }"></i>
+  <tt>
+    <img :src="`../static/images/${image.url}`" @dragenter="">
+    <i v-bind:style="{ paddingBottom: image.height / image.width * 100 + '%' }"></i>
   </tt>
 </template>
 
@@ -20,7 +20,8 @@
   ],
 
   methods: {
-    dragstart(e) {
+    dragenter(e) {
+      console.log('in image drag enter');
       return false;
     },
 

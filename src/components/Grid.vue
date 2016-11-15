@@ -1,16 +1,16 @@
-<!--<template>
-  <div class="grid-container">
-    <div v-for="(item, index) in imagesArray" >
-      <div v-if="item.url" class="photo-container" :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height }"
-           @dragenter="dragEnter($event, index)" @drop="newcomponentdrop"
-           @dragend="dragend"  @dragstart.self="dragnewcompont"  draggable="true">
-        <Photo :image="item" ></Photo>
-      </div>
-      <div class="separator" v-if="item.separator"></div>
-    </div>
-  </div>
-</template>-->
 <template>
+  <div class="grid-container">
+    <template v-for="(item, index) in imagesArray" >
+      <div :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height }"
+      class="photo-container" @dragenter="dragEnter($event, index)" @drop="newcomponentdrop"
+           @dragend="dragend"  @dragstart.self="dragnewcompont" @dragleave.stop.prevent draggable="true">
+        <Photo :image="item" > </Photo>
+      </div>
+      <div  v-bind:class="{ separator: item.separator }"></div>
+    </template>
+  </div>
+</template>
+<!--<template>
   <div class="grid-container">
     <div v-for="(item, index) in imagesArray" class="photo-container" :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height }"
        @dragenter="dragEnter($event, index)" @drop="newcomponentdrop"
@@ -18,7 +18,7 @@
       <Photo :image="item" @dra="drop"></Photo>
     </div>
   </div>
-</template>
+</template>-->
 
 <script>
   /* eslint-disable */
@@ -55,18 +55,28 @@ export default {
       console.log('dragOver', e)
     },
     dragEnter(e, index) {
-      console.log('dragEnter', index, e);
-      if (!this.shadow){
-        this.shadow = this.makeElement();
-        this.shadow.classList.add('separator');
+      console.log('dragEnter grid', index, e.target);
+      if (this.separatorIndex) {
+        //delete[ this.imagesArray[this.separatorIndex].separator];
+        this.$delete(this.imagesArray[this.separatorIndex], 'separator');
       }
-      this.shadowIndex = index;
-//      if (this.shadowIndex) {
-//        this.imagesArray.spice(this.shadowIndex, 1);
-//      }
-//      this.imagesArray.splice(index, 0, { separator: true })
+      this.separatorIndex = index;
+      this.$set(this.imagesArray[this.separatorIndex], 'separator', true)
 
-      e.target.parentNode.insertBefore(this.shadow, e.target);
+      // if (!this.shadow){
+      //   this.shadow = this.makeElement();
+      //   this.shadow.classList.add('separator');
+      // }
+      // if (this.shadowIndex) {
+      //   this.imagesArray.splice(this.shadowIndex, 1);
+      // }
+      // this.shadowIndex = index;
+
+      // this.imagesArray.splice(index, 0, { separator: true });
+      // delete[this.shadowIndex];
+
+
+      //e.target.parentNode.insertBefore(this.shadow, e.target);
 
     },
     dragend(e){
@@ -134,7 +144,6 @@ export default {
   .photo-container {
     border: 6px solid transparent;
     position: relative;
-    display: inline-block;
 
   &.image-holder:not(.gu-mirror) {
      border: 16px solid transparent;
