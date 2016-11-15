@@ -1,12 +1,11 @@
 <template>
   <div class="grid-container">
     <template v-for="(item, index) in imagesArray" >
-      <div :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height }"
+      <div :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height }" v-bind:class="{ separator: item.separator }"
       class="photo-container" @dragenter="dragEnter($event, index)" @drop="newcomponentdrop"
            @dragend="dragend"  @dragstart.self="dragnewcompont" @dragleave.stop.prevent draggable="true">
         <Photo :image="item" > </Photo>
       </div>
-      <div  v-bind:class="{ separator: item.separator }"></div>
     </template>
   </div>
 </template>
@@ -55,7 +54,7 @@ export default {
       console.log('dragOver', e)
     },
     dragEnter(e, index) {
-      console.log('dragEnter grid', index, e.target);
+      console.log('dragEnter grid', index, e.x);
       if (this.separatorIndex) {
         //delete[ this.imagesArray[this.separatorIndex].separator];
         this.$delete(this.imagesArray[this.separatorIndex], 'separator');
@@ -273,6 +272,6 @@ export default {
     content: '';
     position: absolute;
     top: 0;
-    left: -2px;
+    left: -8px;
   }
 </style>
