@@ -129,3 +129,12 @@ export const imagesArray = [
     { url: "fd4599b0f4a5f86e3fd78b1617ada848.jpg", width: "450", height: "450"},
     { url: "fdc71e9d9826787fa29007c57cd1ba71.jpg", width: "450", height: "450"}
 ];
+
+
+// export const imagesArray = [
+//     { url: "000cc2d9b3873ad1067d83c3f887d28a.jpg", width: "675", height: "450"},
+//     { url: "01e6c741ca3e3daba0e9627e416b838d.jpg", width: "725", height: "450"},
+//     { url: "0252dd9637c8f9b4c50f2c22985508b3.jpg", width: "674", height: "450"},
+//     { url: "fa3091fc8b014bc93e4441fb33c44ff7.jpg", width: "902", height: "450"}
+
+// ];

@@ -1,8 +1,8 @@
 <template>
-  <tt>
+  <span class='wrapper'>
     <img :src="`../static/images/${image.url}`" @dragenter="">
     <i v-bind:style="{ paddingBottom: image.height / image.width * 100 + '%' }"></i>
-  </tt>
+  </span>
 </template>
 
 <script>
@@ -49,7 +49,23 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
+  @keyframes growHorizontal {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    animation: growHorizontal 600ms;
+  }
+
   img {
     position: absolute;
     top: 0;
