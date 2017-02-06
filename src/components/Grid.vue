@@ -2,8 +2,8 @@
      <transition-group name="flip-list" tag="div" class="grid-container">
       <div v-for="(item, index) in imagesArray" v-bind:key="item"
 
- :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height }" v-bind:class="{ separator: item.className === 'separator', separatorend: item.className === 'separatorend'}"
-      class="photo-container" @dragenter="dragEnter($event, index)" @drop="componentdrop(index)" @dragover.prevent="dragover($event, index)" ref="image"
+ :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height}" v-bind:class="{ separator: item.className === 'separator', separatorend: item.className === 'separatorend'}"
+      class="photo-container" v-lastrow @dragenter="dragEnter($event, index)" @drop="componentdrop(index)" @dragover.prevent="dragover($event, index)" ref="image"
            @dragend="dragend"  @dragstart="dragstart($event, index)" @dragleave.stop.prevent >
         <Photo :image="item" > </Photo>
       </div>
@@ -19,6 +19,11 @@ export default {
   name: 'Grid',
   components: {
     Photo,
+  },
+  directives: {
+    lastrow: {
+
+    },
   },
   methods: {
 
@@ -126,7 +131,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
   }
-  .grid-container::after {
+  .grid-container-after::after {
     content: '';
     flex-grow: 999999999;
     margin: 0 auto;
