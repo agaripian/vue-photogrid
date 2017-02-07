@@ -8,57 +8,91 @@
   /* eslint-disable */
 import $ from 'jquery';
 import Grid from './components/Grid';
-let $grid = '';
+let $grid = $('.grid-container');
+let prevLastRowCount = 0;
 function updateLastRowStyle() {
   console.log('updateLastRowStyle');
   console.log($grid);
-  $('.grid-container').find('.js-last-elem').remove();
+  $grid.find('.js-last-elem').remove();
   const gridWrapped = $('.photo-container:first').outerHeight() <= $grid.innerHeight();
   const lastItemMuchLarger = $('.photo-container:last').innerHeight() >= $('.photo-container:first').innerHeight() * 1.40;
-
+  $grid.removeClass('grid-container-after');
   let prevRatio = null;
-  let prevTop = null;
-  let rowCountFromBottom = 1;
-  let numItemsInSecondtoLastRow = 1;
-  let numItemsInLastRow = 1;
   let gridItems = {};
+  let sameRatios = false;
 
-  // if (gridWrapped && lastItemMuchLarger) {
-  //  $grid.addClass('grid-container-after');
-  // }
 
   if (gridWrapped) {
-    $('.photo-container').get().reverse().some(function (item) {
-      const $item = $(item);
-      const currentRatio = $item.innerHeight() / $item.outerHeight();
-      const currentTop = $item.offset().top;
 
-      gridItems[currentTop] = gridItems[currentTop] ? gridItems[currentTop]+=1 : 1;
+  }
+  $('.photo-container').get().reverse().some(function (item) {
+    $item = $(item);
+    const currentRatio = $item.innerHeight() / $item.outerHeight();
+    const currentTop = $item.offset().top;
+    gridItems[currentTop] = gridItems[currentTop] ? gridItems[currentTop]+=1 : 1;
+  });
 
-      const gridRows = Object.keys(gridItems);
-      if (gridRows.length === 3) {
-        gridRows.sort((a, b) => { const numA = Number(a); const numB = Number(b); return numA > numB ? 1 : numA < numB ? -1 : 0; });
-        const numOfItemsLastRow = gridItems[gridRows[2]];
-        const numOfItemsSecondToLastRow = gridItems[gridRows[1]];
-        const difference = numOfItemsSecondToLastRow - numOfItemsLastRow;
-        if (difference) {
-          const psudeoFlexGrow = $item.css('flex-grow');//difference * $item.css('flex-grow');
-          const psudeoWidth = difference * $item.outerWidth() - parseInt($item.css("border-left-width"), 10) - parseInt($item.css("border-right-width"), 10);
-          var lastDiv = $("<span class='js-last-elem'></span>");
-          lastDiv.css({ width: psudeoWidth, border: '16px solid transparent' })
-          $('.grid-container').append(lastDiv);
-          console.log('psudeoFlexGrow: ' + psudeoFlexGrow);
+
+
+
+//TODO remove logic from loop, just loop to build the array
+  setTimeout(() => {
+    if (gridWrapped) {
+      let gridRows;
+      let gridItems = {};
+      let $item;
+      let divAdded = $('.photo-container').get().reverse().some(function (item) {
+
+        $item = $(item);
+        const currentRatio = $item.innerHeight() / $item.outerHeight();
+        const currentTop = $item.offset().top;
+
+        gridItems[currentTop] = gridItems[currentTop] ? gridItems[currentTop]+=1 : 1;
+
+        gridRows = Object.keys(gridItems);
+        const lastRowCount = gridItems[gridRows[gridRows.length - 1]];
+
+        if (prevLastRowCount && prevLastRowCount === lastRowCount) {
+          return true;
         }
 
-        return true;
+        if (prevRatio && (currentRatio != prevRatio) && lastItemMuchLarger) {
+          console.log('adding after!!!!')
+          $grid.addClass('grid-container-after');
+          return true;
+        }
+
+
+        if (gridRows.length === 3) {
+          addDivAtEnd(gridItems, gridRows, $item);
+          return true;
+        }
+
+        prevRatio = currentRatio;
+        prevLastRowCount = lastRowCount;
+      });
+
+      if (!divAdded) {
+        addDivAtEnd(gridItems, gridRows, $item);
       }
 
-      prevRatio = currentRatio;
-    });
+    }
+  }, 0)
+
+
+function addDivAtEnd(gridItems, gridRows, $item) {
+  gridRows.sort((a, b) => { const numA = Number(a); const numB = Number(b); return numA > numB ? 1 : numA < numB ? -1 : 0; });
+  const numOfItemsLastRow = gridItems[gridRows[gridRows.length - 1]];
+  const numOfItemsSecondToLastRow = gridItems[gridRows[gridRows.length-2]];
+  const difference = numOfItemsSecondToLastRow - numOfItemsLastRow;
+  if (difference) {
+    const psudeoFlexGrow = $item.css('flex-grow');//difference * $item.css('flex-grow');
+    const psudeoWidth = difference * $item.outerWidth() - parseInt($item.css("border-left-width"), 10) - parseInt($item.css("border-right-width"), 10);
+    var lastDiv = $("<span class='js-last-elem'></span>");
+    lastDiv.css({ width: psudeoWidth, border: '16px solid transparent' })
+    $('.grid-container').append(lastDiv);
+    console.log('psudeoFlexGrow: ' + psudeoFlexGrow);
   }
-
-function modifyAfterPsudoFlexGrow() {
-
 }
 
 };
