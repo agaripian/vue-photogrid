@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:8080/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Grid Demo</title>
+    <script src="./Grid Demo_files/jquery.min.js"></script>
+    <script src="./Grid Demo_files/lodash.min.js"></script>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: arial;
+      font-size: 13px;
+    }
+    body {
+      background: #fff;
+    }
+    section {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    div {
+      /*background-color: violet;*/
+      position: relative;
+      border: 16px solid transparent;
+    }
+
+    i {
+      display: block;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      vertical-align: bottom;
+      //opacity: 0.75;
+    }
+
+    .width,
+    .max {
+      position: absolute;
+      border-radius: 3px;
+    }
+
+    .width {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .width span {
+      top: 50%;
+      left: 50%;
+      background: rgba(0,0,0,0.66);
+      color:#fff;
+      padding: 10px;
+      font-size: 15px;
+    }
+
+    .max {
+      right: 10px;
+      bottom: 10px;
+      background: #fff;
+      font-weight: bold;
+      padding: 3px;
+    }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="image" style="width:266.6px; flex-grow:266">
+          <i style="padding-bottom:75%"></i>
+          <img src="./Grid Demo_files/small.jpg">
+      <div class="max">Max: 449</div><div class="width"><span>192.796875</span></div></div>
+      <div class="image" style="width:150px; flex-grow:150">
+          <i style="padding-bottom:133.33333333333331%"></i>
+          <img src="./Grid Demo_files/photo-103450229.jpg">
+      <div class="max">Max: 449</div><div class="width"><span>192.796875</span></div></div>
+      <div class="image" style="width:300px; flex-grow:300">
+          <i style="padding-bottom:66.66666666666666%"></i>
+          <img src="./Grid Demo_files/photo-108273877.jpg">
+      <div class="max">Max: 499.3333333333333</div><div class="width"><span>385.59375</span></div></div>
+      <div class="image" style="width:300px; flex-grow:300">
+          <i style="padding-bottom:66.66666666666666%"></i>
+          <img src="./Grid Demo_files/photo-115203323.jpg">
+      <div class="max">Max: 566</div><div class="width"><span>385.59375</span></div></div>
+      <div class="image" style="width:266.6666666666667px; flex-grow:266.6666666666667">
+          <i style="padding-bottom:75%"></i>
+          <img src="./Grid Demo_files/photo-23583825.jpg">
+      <div class="max">Max: 566</div><div class="width"><span>296.5625</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-123942383.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>333.71875</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-124559545.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>333.71875</span></div></div>
+      <div class="image" style="width:300px; flex-grow:300">
+          <i style="padding-bottom:66.66666666666666%"></i>
+          <img src="./Grid Demo_files/stock-photo-132046989.jpg">
+      <div class="max">Max: 598</div><div class="width"><span>303.0625</span></div></div>
+      <div class="image" style="width:298.7303958177745px; flex-grow:298.7303958177745">
+          <i style="padding-bottom:66.95%"></i>
+          <img src="./Grid Demo_files/stock-photo-132118343.jpg">
+      <div class="max">Max: 598</div><div class="width"><span>301.765625</span></div></div>
+      <div class="image" style="width:355.55555555555554px; flex-grow:355.55555555555554">
+          <i style="padding-bottom:56.25%"></i>
+          <img src="./Grid Demo_files/stock-photo-132311221.jpg">
+      <div class="max">Max: 655</div><div class="width"><span>359.171875</span></div></div>
+      <div class="image" style="width:299.85007496251876px; flex-grow:299.85007496251876">
+          <i style="padding-bottom:66.7%"></i>
+          <img src="./Grid Demo_files/stock-photo-132586903.jpg">
+      <div class="max">Max: 599</div><div class="width"><span>333.8125</span></div></div>
+      <div class="image" style="width:299.4011976047904px; flex-grow:299.4011976047904">
+          <i style="padding-bottom:66.8%"></i>
+          <img src="./Grid Demo_files/stock-photo-135203031.jpg">
+      <div class="max">Max: 566</div><div class="width"><span>333.3125</span></div></div>
+      <div class="image" style="width:266.6666666666667px; flex-grow:266.6666666666667">
+          <i style="padding-bottom:75%"></i>
+          <img src="./Grid Demo_files/stock-photo-135626379.jpg">
+      <div class="max">Max: 563</div><div class="width"><span>296.875</span></div></div>
+      <div class="image" style="width:296.7359050445104px; flex-grow:296.7359050445104">
+          <i style="padding-bottom:67.4%"></i>
+          <img src="./Grid Demo_files/stock-photo-136947953.jpg">
+      <div class="max">Max: 596</div><div class="width"><span>318.953125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-138378295.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>322.53125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-138436811.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>322.53125</span></div></div>
+      <div class="image" style="width:355.55555555555554px; flex-grow:355.55555555555554">
+          <i style="padding-bottom:56.25%"></i>
+          <img src="./Grid Demo_files/stock-photo-142950305.jpg">
+      <div class="max">Max: 564.3789100954677</div><div class="width"><span>411.8125</span></div></div>
+      <div class="image" style="width:168.6px; flex-grow:168.6">
+          <i style="padding-bottom:118.62396204033215%"></i>
+          <img src="./Grid Demo_files/stock-photo-143046061.jpg">
+      <div class="max">Max: 476</div><div class="width"><span>195.265625</span></div></div>
+      <div class="image" style="width:308.1664098613251px; flex-grow:308.1664098613251">
+          <i style="padding-bottom:64.9%"></i>
+          <img src="./Grid Demo_files/stock-photo-143181649.jpg">
+      <div class="max">Max: 608</div><div class="width"><span>356.921875</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-144530143.jpg">
+      <div class="max">Max: 500</div><div class="width"><span>310.03125</span></div></div>
+      <div class="image" style="width:200px; flex-grow:200">
+          <i style="padding-bottom:100%"></i>
+          <img src="./Grid Demo_files/stock-photo-144730939.jpg">
+      <div class="max">Max: 379.20037920037925</div><div class="width"><span>206.640625</span></div></div>
+      <div class="image" style="width:133.33333333333334px; flex-grow:133.33333333333334">
+          <i style="padding-bottom:150%"></i>
+          <img src="./Grid Demo_files/stock-photo-145414771.jpg">
+      <div class="max">Max: 333</div><div class="width"><span>137.75</span></div></div>
+      <div class="image" style="width:299.62546816479403px; flex-grow:299.62546816479403">
+          <i style="padding-bottom:66.75%"></i>
+          <img src="./Grid Demo_files/stock-photo-146038669.jpg">
+      <div class="max">Max: 500</div><div class="width"><span>309.578125</span></div></div>
+      <div class="image" style="width:299.62546816479403px; flex-grow:299.62546816479403">
+          <i style="padding-bottom:66.75%"></i>
+          <img src="./Grid Demo_files/stock-photo-146231033.jpg">
+      <div class="max">Max: 491.456030754445</div><div class="width"><span>376.0625</span></div></div>
+      <div class="image" style="width:168.6px; flex-grow:168.6">
+          <i style="padding-bottom:118.62396204033215%"></i>
+          <img src="./Grid Demo_files/stock-photo-146914861.jpg">
+      <div class="max">Max: 468</div><div class="width"><span>211.609375</span></div></div>
+      <div class="image" style="width:299.85007496251876px; flex-grow:299.85007496251876">
+          <i style="padding-bottom:66.7%"></i>
+          <img src="./Grid Demo_files/stock-photo-147877407.jpg">
+      <div class="max">Max: 599</div><div class="width"><span>376.34375</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-147969173.jpg">
+      <div class="max">Max: 599</div><div class="width"><span>334.640625</span></div></div>
+      <div class="image" style="width:299.6158770806658px; flex-grow:299.6158770806658">
+          <i style="padding-bottom:66.75213675213675%"></i>
+          <img src="./Grid Demo_files/stock-photo-148015373.jpg">
+      <div class="max">Max: 564</div><div class="width"><span>334.140625</span></div></div>
+      <div class="image" style="width:264.70588235294116px; flex-grow:264.70588235294116">
+          <i style="padding-bottom:75.55555555555556%"></i>
+          <img src="./Grid Demo_files/stock-photo-148704233.jpg">
+      <div class="max">Max: 564</div><div class="width"><span>295.21875</span></div></div>
+      <div class="image" style="width:299.6158770806658px; flex-grow:299.6158770806658">
+          <i style="padding-bottom:66.75213675213675%"></i>
+          <img src="./Grid Demo_files/stock-photo-148928293.jpg">
+      <div class="max">Max: 601</div><div class="width"><span>320.34375</span></div></div>
+      <div class="image" style="width:301.93548387096774px; flex-grow:301.93548387096774">
+          <i style="padding-bottom:66.23931623931624%"></i>
+          <img src="./Grid Demo_files/stock-photo-148950715.jpg">
+      <div class="max">Max: 601</div><div class="width"><span>322.828125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-21951271.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>320.828125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-21964829.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>321.328125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-22618399.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>321.328125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-31201539.jpg">
+      <div class="max">Max: 503.95510413148963</div><div class="width"><span>321.328125</span></div></div>
+      <div class="image" style="width:141.14583333333334px; flex-grow:141.14583333333334">
+          <i style="padding-bottom:141.69741697416973%"></i>
+          <img src="./Grid Demo_files/stock-photo-34598868.jpg">
+      <div class="max">Max: 441</div><div class="width"><span>192.28125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-47252094.jpg">
+      <div class="max">Max: 457.15119819939105</div><div class="width"><span>408.796875</span></div></div>
+      <div class="image" style="width:133.2px; flex-grow:133.2">
+          <i style="padding-bottom:150.15015015015015%"></i>
+          <img src="./Grid Demo_files/stock-photo-51980510.jpg">
+      <div class="max">Max: 216.5</div><div class="width"><span>181.453125</span></div></div>
+      <div class="image" style="width:133.2px; flex-grow:133.2">
+          <i style="padding-bottom:150.15015015015015%"></i>
+          <img src="./Grid Demo_files/stock-photo-55601508.jpg">
+      <div class="max">Max: 216.5</div><div class="width"><span>181.453125</span></div></div>
+      <div class="image" style="width:298.7012987012987px; flex-grow:298.7012987012987">
+          <i style="padding-bottom:66.95652173913044%"></i>
+          <img src="./Grid Demo_files/stock-photo-65681789.jpg">
+      <div class="max">Max: 459.9998155207228</div><div class="width"><span>360.6875</span></div></div>
+      <div class="image" style="width:200px; flex-grow:200">
+          <i style="padding-bottom:100%"></i>
+          <img src="./Grid Demo_files/stock-photo-70461471.jpg">
+      <div class="max">Max: 499</div><div class="width"><span>241.515625</span></div></div>
+      <div class="image" style="width:299.62546816479403px; flex-grow:299.62546816479403">
+          <i style="padding-bottom:66.75%"></i>
+          <img src="./Grid Demo_files/stock-photo-71801901.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>361.8125</span></div></div>
+      <div class="image" style="width:301.2048192771084px; flex-grow:301.2048192771084">
+          <i style="padding-bottom:66.4%"></i>
+          <img src="./Grid Demo_files/stock-photo-71913567.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>322.296875</span></div></div>
+      <div class="image" style="width:299.62546816479403px; flex-grow:299.62546816479403">
+          <i style="padding-bottom:66.75%"></i>
+          <img src="./Grid Demo_files/stock-photo-72223295.jpg">
+      <div class="max">Max: 599</div><div class="width"><span>320.609375</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-72620185.jpg">
+      <div class="max">Max: 433</div><div class="width"><span>321.078125</span></div></div>
+      <div class="image" style="width:133.2px; flex-grow:133.2">
+          <i style="padding-bottom:150.15015015015015%"></i>
+          <img src="./Grid Demo_files/stock-photo-74402039.jpg">
+      <div class="max">Max: 433</div><div class="width"><span>175.09375</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-75097491.jpg">
+      <div class="max">Max: 599</div><div class="width"><span>394.453125</span></div></div>
+      <div class="image" style="width:300.0750187546887px; flex-grow:300.0750187546887">
+          <i style="padding-bottom:66.64999999999999%"></i>
+          <img src="./Grid Demo_files/stock-photo-75186237.jpg">
+      <div class="max">Max: 600</div><div class="width"><span>394.453125</span></div></div>
+      <div class="image" style="width:301.8867924528302px; flex-grow:301.8867924528302">
+          <i style="padding-bottom:66.25%"></i>
+          <img src="./Grid Demo_files/stock-photo-79250373.jpg">
+      <div class="max">Max: 510.4321051098106</div><div class="width"><span>394.828125</span></div></div>
+      <div class="image" style="width:134px; flex-grow:134">
+          <i style="padding-bottom:149.2537313432836%"></i>
+          <img src="./Grid Demo_files/stock-photo-79692589.jpg">
+      <div class="max">Max: 435</div><div class="width"><span>175.265625</span></div></div>
+      <div class="image" style="width:301.1764705882353px; flex-grow:301.1764705882353">
+          <i style="padding-bottom:66.40625%"></i>
+          <img src="./Grid Demo_files/stock-photo-7979718.jpg">
+      <div class="max">Max: 602</div><div class="width"><span>393.90625</span></div></div>
+      <div class="image" style="width:301.1764705882353px; flex-grow:301.1764705882353">
+          <i style="padding-bottom:66.40625%"></i>
+          <img src="./Grid Demo_files/stock-photo-7980252.jpg">
+      <div class="max">Max: 552</div><div class="width"><span>354.734375</span></div></div>
+      <div class="image" style="width:251.41420490257698px; flex-grow:251.41420490257698">
+          <i style="padding-bottom:79.55%"></i>
+          <img src="./Grid Demo_files/stock-photo-81390687.jpg">
+      <div class="max">Max: 384</div><div class="width"><span>296.125</span></div></div>
+      <div class="image" style="width:133.4px; flex-grow:133.4">
+          <i style="padding-bottom:149.92503748125935%"></i>
+          <img src="./Grid Demo_files/stock-photo-81988949.jpg">
+      <div class="max">Max: 179.2237288664134</div><div class="width"><span>157.109375</span></div></div>
+      <div class="image" style="width:132.47863247863248px; flex-grow:132.47863247863248">
+          <i style="padding-bottom:150.96774193548387%"></i>
+          <img src="./Grid Demo_files/stock-photo-83149705.jpg">
+      <div class="width"><span>156.03125</span></div></div>
+  </section>
+
+  <script>
+  const images = [];
+
+  //TODO: insert psuedo element when we give up trying to jiggle
+  //TODO: don't attempt to make any image larger than it's natural size!
+  //TODO: get parameters from the design team!
+
+  function calcWidths() {
+    $('.image').each(function() {
+      const $elem = $(this);
+      const width = $elem.width();
+      const height = $elem.height();
+      const flexWidth = parseFloat($elem.css('flex-grow'));
+      const flexHeight = flexWidth * height / width;
+      $elem.find('.width').remove();
+      $elem.find('.max').remove();
+      images.push({
+        $elem,
+        flexWidth,
+        flexHeight
+      });
+    });
+  }
+
+  function adjustWidths(flexModifier) {
+    images.forEach(function({ $elem, flexWidth }) {
+      const newFlexWidth = flexModifier * flexWidth;
+
+      $elem.css({
+        flexGrow: newFlexWidth,
+        width: newFlexWidth
+      });
+    });
+  }
+
+  function recalcWidths() {
+    console.time('recalcWidths');
+
+    const screenWidth = $(window).width(); // 1400
+    const maxRatio = 1.25;
+    const maxModifier = 1.5;
+
+    let flexModifier = 1;
+    let flexGrowth = .02;
+    let last = 2;
+    let avg = 1;
+    let direction = -1;
+    let rest;
+    let rowHeights;
+
+    while ( last / avg > maxRatio && flexModifier < maxModifier ) {
+      flexGrowth += .05;
+      direction *= -1;
+      flexModifier = 1 + (flexGrowth * direction);
+      rowHeights = getRowHeights(screenWidth, flexModifier);
+      [ last, ...rest ] = rowHeights.reverse();
+      avg = rest.reduce((sum, height) => sum + height, 0) / rest.length;
+    }
+
+    // If a good modifier was not found, use the original flexGrow
+    if (flexModifier < maxModifier) {
+      console.log('FOUND SUITABLE MODIFIER! Adjusting widths...');
+      adjustWidths(flexModifier);
+    }
+    else {
+      console.log('GAVE UP! Inserting large invisible div after last image...');
+      adjustWidths(1);
+      // TODO: insert psuedo-element so we have an incomplete last row,
+      // which is preferable to a giant image!
+    }
+
+    console.timeEnd('recalcWidths');
+  }
+
+  function getRowHeights(screenWidth, flexModifier) {
+    var rowHeights = [];
+    var currentRow = [];
+    var remaining = screenWidth;
+
+    images.forEach((image, index) => {
+      var modifiedWidth = flexModifier * image.flexWidth;
+      var modifiedHeight = flexModifier * image.flexHeight;
+
+      if (remaining >= modifiedWidth) {
+        remaining -= modifiedWidth;
+      } else {
+        sumOfWidths = currentRow.reduce(function(a, b) {
+          return a + b.modifiedWidth;
+        }, 0);
+
+        rowHeights.push(currentRow[0].modifiedHeight * screenWidth / sumOfWidths);
+        remaining = screenWidth - modifiedWidth;
+        currentRow = [];
+      }
+
+      currentRow.push({
+        modifiedWidth,
+        modifiedHeight
+      });
+    });
+
+    sumOfWidths = currentRow.reduce(function(a, b) {
+      return a + b.modifiedWidth;
+    }, 0);
+
+    rowHeights.push(currentRow[0].modifiedHeight * screenWidth / sumOfWidths);
+
+    return rowHeights
+  }
+
+  calcWidths();
+
+  recalcWidths();
+  $(window).resize(recalcWidths);
+  </script>
+
+
+</body></html>
