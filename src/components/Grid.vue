@@ -1,9 +1,7 @@
 <template>
   <div>
-{{imagesArray}} helloddddddddddd
-      <div v-for="(item, index) in imagesArray" v-bind:key="index"
-
- :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height}" v-bind:class="{ separator: item.className === 'separator', separatorend: item.className === 'separatorend'}"
+    <transition-group name="flip-list" tag="div" class="grid-container">
+    <div v-for="(item, index) in imagesArray" v-bind:key="index" :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height}" v-bind:class="{ separator: item.className === 'separator', separatorend: item.className === 'separatorend'}"
       class="photo-container" v-lastrow @dragenter="dragEnter($event, index)" @drop="componentdrop(index)" @dragover.prevent="dragover($event, index)" ref="image"
            @dragend="dragend"  @dragstart="dragstart($event, index)" @dragleave.stop.prevent >
         <Photo :image="item" > </Photo>

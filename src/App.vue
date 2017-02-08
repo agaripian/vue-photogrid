@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <input type="radio" id="LastRow" value="LastRow" v-model="type" @change="calcType">
+    <input type="radio" id="LastRow" value="LastRow" v-model="type"  v-on:click="calcType('LastRow')">
     <label for="LastRow">Last Row Only</label>
-    <input type="radio" id="ExactFit" value="ExactFit" v-model="type" @change="calcType">
+    <input type="radio" id="ExactFit" value="ExactFit" v-model="type" v-on:click="calcType('ExactFit')">
     <label for="ExactFit">Grid Exact Fit</label>
  <span> ---------- </span>
   <input type="radio" id="differentSize" value="differentSize" v-model="imageType">
     <label for="differentSize">Different Sizes</label>
     <input type="radio" id="sameSize" value="sameSize" v-model="imageType">
     <label for="sameSize">Same Size</label>
-     <transition-group name="flip-list" tag="div" class="grid-container">
-    <Grid v-lastrow :imagesArray="imagesArray"></Grid>
+    <Grid v-if="imageType === 'differentSize'" v-lastrow :imagesArray="imagesArrayDifferent"></Grid>
+    <Grid v-if="imageType === 'sameSize'" v-lastrow :imagesArray="imagesArraySame"></Grid>
   </div>
 </template>
 
@@ -90,13 +90,13 @@ function addDivAtEnd(sameRatios, difference, $item) {
     const psudeoWidth = difference * $item.outerWidth() - parseInt($item.css("border-left-width"), 10) - parseInt($item.css("border-right-width"), 10);
     $lastElem.css({ width: psudeoWidth });
    // console.log('psudeoFlexGrow: ' + psudeoFlexGrow);
-    $grid.append($lastElem);
+    $('.grid-container').append($lastElem);
   }
   else {
     const lastItemMuchLarger = $('.photo-container:last').innerHeight() >= $('.photo-container:first').innerHeight() * 1.30; // 40% larger or whatever we think is acceptable
     if (lastItemMuchLarger) {
       $lastElem.css({ 'flex-grow': '99999999999' });
-      $grid.append($lastElem);
+      $('.grid-container').append($lastElem);
     }
   }
 
@@ -218,6 +218,7 @@ const images = [];
 
 //end exact fit solution @@@@
 function bind(calcType) {
+  $('.js-last-elem').remove();
   $(window).off('resize');
   if (calcType === 'LastRow') {
     $(window).resize(updateLastRowStyle);
@@ -237,15 +238,25 @@ export default {
   data() {
     return {
       type: 'ExactFit',
-      imageType: 'differentSize'
+      imageType: 'differentSize',
+      imagesArrayDifferent,
+      imagesArraySame
     }
   },
   mounted: function () {
-    bind(this.type);
+    //bind(this.type);
   },
  methods: {
-    calcType: function (event) {
+    calcType: function (type) {
+      bind(type);
+    }
+  },
+
+  watch: {
+    // whenever question changes, this function will run
+    imageType: function (value) {
       bind(this.type);
+
     }
   },
   directives: {
@@ -261,18 +272,18 @@ export default {
       }
     }
   },
-  computed: {
-    imagesArray: function() {
-      if (this.imageType === 'differentSize') {
-        debugger;
-           return imagesArrayDifferent
-        }
-      if (this.imageType === 'sameSize') {
-          return imagesArraySame
-      }
-      return [  { url: "1200x900.png", width: "1200", height: "900"},]
-    }
-  }
+//  computed: {
+//    imagesArray: function() {
+//      if (this.imageType === 'differentSize') {
+//        debugger;
+//           return imagesArrayDifferent
+//        }
+//      if (this.imageType === 'sameSize') {
+//          return imagesArraySame
+//      }
+//      return [ ]
+//    }
+//  }
 };
 </script>
 
