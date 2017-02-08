@@ -160,7 +160,14 @@ const imagesArraySameRatio = [
     { url: "1200x900.png", width: "1200", height: "900"},
     { url: "1200x900.png", width: "1200", height: "900"},
     { url: "1200x900.png", width: "1200", height: "900"},
+    { url: "1200x900.png", width: "1200", height: "900"},
+    { url: "1200x900.png", width: "1200", height: "900"},
+    { url: "1200x900.png", width: "1200", height: "900"},
+    { url: "1200x900.png", width: "1200", height: "900"},
+    { url: "1200x900.png", width: "1200", height: "900"},
+    { url: "1200x900.png", width: "1200", height: "900"},
+    { url: "1200x900.png", width: "1200", height: "900"}
 ];
 
-//export const imagesArray = shuffle(imagesOriginalArray);
-export const imagesArray = shuffle(imagesArraySameRatio);
+export const imagesArrayDifferent = shuffle(imagesOriginalArray);
+export const imagesArraySame = shuffle(imagesArraySameRatio);

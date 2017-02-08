@@ -1,6 +1,7 @@
 <template>
-     <transition-group name="flip-list" tag="div" class="grid-container">
-      <div v-for="(item, index) in imagesArray" v-bind:key="item"
+  <div>
+{{imagesArray}} helloddddddddddd
+      <div v-for="(item, index) in imagesArray" v-bind:key="index"
 
  :style="{ width: item.width*200/item.height + 'px',  'flex-grow': item.width*200/item.height}" v-bind:class="{ separator: item.className === 'separator', separatorend: item.className === 'separatorend'}"
       class="photo-container" v-lastrow @dragenter="dragEnter($event, index)" @drop="componentdrop(index)" @dragover.prevent="dragover($event, index)" ref="image"
@@ -8,18 +9,22 @@
         <Photo :image="item" > </Photo>
       </div>
     </transition-group>
+  </div>
+
 
 </template>
 
 <script>
   /* eslint-disable */
 import Photo from './Photo';
-import { imagesArray } from '../assets/images';
 export default {
   name: 'Grid',
   components: {
     Photo,
   },
+  props: [
+    'imagesArray'
+  ],
   directives: {
     lastrow: {
 
@@ -98,11 +103,6 @@ export default {
     })
 
     },
-  },
-  data() {
-    return {
-      imagesArray,
-    };
   },
 };
 </script>
